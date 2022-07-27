@@ -5,7 +5,7 @@
 Begin by installing this package through Go. Just run following command to terminal-
 
 ```shell script
-go get github.com/Codecamplao/Telbiz.SDK.Golang
+go get github.com/Codecamplao/Telbiz.SDK.Golang/telbiz@v1.0.1
 ```
 
 Next, Add more config on environment file. Open `.env`, and add a new three config like below.
