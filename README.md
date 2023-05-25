@@ -38,7 +38,7 @@ Send SMS
 message := &telbiz.Message{
     To:    "2077805085",
     Title: telbiz.Info,
-    Body:  "This is an open source Tizbiz Client Library for Go develop by jvonxay0308!",
+    Body:  "This is an officially Tizbiz Client Library for Go!",
 }
 sms, err := client.SendSMS(ctx, message)
 if err != nil {
