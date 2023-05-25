@@ -1,32 +1,59 @@
-# TelBiz.SDK.Golang
+# Telbiz Client Libraries for Go
+
+This repository contains Telbiz's Go client libraries. These libraries are officially maintained by Telbiz.
+The libraries follow the Telbiz API closely and are designed to provide a native developer experience for Go developers.
+
+## Documentation
+
+The documentation for the Telbiz API can be found in [Docs](https://telbiz.la/pages/doc/user-guide).
 
 ## Installation
 
-Begin by installing this package through Go. Just run following command to terminal-
+Use go get to retrieve the latest version of the client.
 
-```shell script
-go get github.com/Codecamplao/Telbiz.SDK.Golang/telbiz@v1.0.1
+```bash
+go get -u github.com/Codecamplao/Telbiz.SDK.Golang/v2
 ```
 
-Next, Add more config on environment file. Open `.env`, and add a new three config like below.
+## Usage
 
-```dotenv
-TELBIZ_BASE_URI=""
-TELBIZ_CLIENT_ID=""
-TELBIZ_CLIENT_SECRET=""
-```
-
-## Example to use
 ```go
-import (
-	"fmt"
-	"github.com/Codecamplao/Telbiz.SDK.Golang/telbiz"
-)
+import telbiz "github.com/Codecamplao/Telbiz.SDK.Golang/v2"
+```
 
-func main() {
-	sms := telbiz.SMSService(telbiz.Default, "20xxxxxxxx", "Hello Telbiz")
-	fmt.Printf("SMS Response :: %+v\n", sms)
+Construct a new Telbiz client, then use the various services on the client to
+access different parts of the Telbiz API. For example:
+
+```go
+ctx := context.Background()
+client, err := telbiz.NewClient(ctx, "YOUR_API_KEY", "YOUR_SECRET_KEY")
+if err != nil {
+    panic(err)
 }
 ```
 
+Send SMS
 
+```go
+message := &telbiz.Message{
+    To:    "2077805085",
+    Title: telbiz.Info,
+    Body:  "This is an open source Tizbiz Client Library for Go develop by jvonxay0308!",
+}
+sms, err := client.SendSMS(ctx, message)
+if err != nil {
+    panic(err)
+}
+```
+
+## Go Versions Supported
+
+This library supports the following Go implementations:
+
+- Go 1.20.x
+- Go 1.19.x
+- Go 1.18.x
+
+## Contributing
+
+Contributions are welcome. Please open up an issue or create a pull request if you would like to help out.
