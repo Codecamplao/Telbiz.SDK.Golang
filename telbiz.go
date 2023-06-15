@@ -254,6 +254,9 @@ type sendSMSResp struct {
 
 // newSendSMSReq creates a new sendSMSReq from a Message.
 func newSendSMSReq(m *Message) (*sendSMSReq, error) {
+	if m == nil {
+		return nil, errors.New("newSendSMSReq: Message must not be nil")
+	}
 	if err := validateTitle(m.Title); err != nil {
 		return nil, err
 	}
