@@ -189,6 +189,8 @@ func (c *Client) startTokenRefresher(ctx context.Context) {
 			c.mu.Lock()
 			c.token = token
 			c.mu.Unlock()
+
+			return
 		}
 	}
 
