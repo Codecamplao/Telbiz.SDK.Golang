@@ -46,6 +46,42 @@ if err != nil {
 }
 ```
 
+Top-up balance
+
+```go
+req := &telbiz.TopUpBalanceReq{
+    To:     "2077805085",
+    Amount: 10000,
+}
+tx, err := client.TopUpBalance(ctx, 1000)
+if err != nil {
+    panic(err)
+}
+```
+
+List available data packages
+
+```go
+req := &telbiz.DataPackagesReq{}
+packages, err := client.DataPackages(ctx, req)
+if err != nil {
+    panic(err)
+}
+```
+
+Top-up data package
+
+```go
+req := &telbiz.TopUpDataPackageReq{
+    To:        "2077805085",
+    PackageID: "pk001",
+}
+tx, err := client.TopUpDataPackage(ctx, req)
+if err != nil {
+    panic(err)
+}
+```
+
 ## Go Versions Supported
 
 This library supports the following Go implementations:
